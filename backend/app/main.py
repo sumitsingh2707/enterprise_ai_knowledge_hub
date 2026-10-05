@@ -14,7 +14,7 @@ from app.graph.checkpointer import (
     checkpointer_manager,
 )
 from app.graph.workflow import create_workflow
-
+from app.core.config import settings
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -66,7 +66,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173",
+        settings.frontendurl,
     ],
     allow_credentials=True,
     allow_methods=["*"],
