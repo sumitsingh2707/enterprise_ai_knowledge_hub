@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_URL } from "../config/api";
 
 interface Source {
   document_id: number;
@@ -32,7 +33,7 @@ function Chat() {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/api/chat",
+        `${API_URL}/api/chat`,
         {
           method: "POST",
           headers: {
