@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../config/api";
 
 interface Document {
     id: number;
@@ -15,7 +16,7 @@ function Documents() {
 
     const loadDocuments = async () => {
         try {
-            const response = await fetch("http://localhost:8000/api/documents");
+            const response = await fetch(`${API_URL}/api/documents`);
             const data = await response.json();
             setDocuments(data)
         } catch (error) {
@@ -44,7 +45,7 @@ function Documents() {
 
         try {
             const response = await fetch(
-                "http://localhost:8000/api/documents",
+                `${API_URL}/api/documents`,
                 {
                     method: "POST",
                     body: formData,
@@ -103,7 +104,6 @@ function Documents() {
             </table>
         </div>
     );
-
 }
 
 export default Documents;
